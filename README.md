@@ -1,4 +1,4 @@
-# Webscraping Sustainable Investment lists
+# Sustainable and responsible investment policies 
 A webscraping model for scraping data from the United Global Compact list. This code is solely for practising the use of Github and webscraping
 
 Do not make use of webscraping models without explicit permission from the respective website. 
