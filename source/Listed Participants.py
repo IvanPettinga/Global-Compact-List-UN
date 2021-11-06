@@ -6,6 +6,7 @@ import time as time
 import os
 
 result_location = input("Enter the results path: ")
+print("Loading data from webpage, please wait")
 page_results = []
 company_list = []
 
@@ -18,9 +19,7 @@ max_pages = soup_max_pages.find_all(attrs={'class':'results-count'})
 for page in max_pages:
     page_number = page.get_text()
 
-max_page_number = 2
-
-#int(page_number[:6])/50
+max_page_number = int(page_number[:6])/50
 
 #iterating through the page numbers appending each table 
 for page_number in range(1,int(max_page_number)):
@@ -39,3 +38,4 @@ for page_number in range(1,int(max_page_number)):
 
 dataframe = pd.DataFrame(company_list[1:], columns = ['Name'])
 dataframe.to_csv(os.path.join(result_location, "Global_compact_list.csv"))
+
