@@ -6,7 +6,7 @@ import time as time
 import os
 
 
-result_location = "C:\\Users\\Ivan\\source\\repos\\United-Global-Compact-List" #input("Enter the results path: ")
+result_location = result_location = input("Enter the results path: ")
 print("Loading data from webpage, please wait")
 page_results = []
 company_list = []
