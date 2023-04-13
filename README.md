@@ -10,6 +10,10 @@ The measures are in place to protect the integrity of the initiative and the UN 
 Source: https://www.unglobalcompact.org/about/integrity-measures
 
 # Features
-* A script to extract the names of all organizations participating in the Global Compact List
-* A script to extract the names of all organization that have been delisted from the Global Compact List
+* A script to extract all the active, non-communicating and delisted participants of the UN global Compact List
 
+Preview of result
+| Participant | Country    | Year    | Sector    | Status    |
+| :---:   | :---: | :---: | :---:   | :---: | :---: |
+| Company A | Spain   | 2023-04-11   | Electricity | active  |
+| Company B | China   | 2023-04-11   | Alternative Energy | delisted|
