@@ -12,8 +12,10 @@ Source: https://www.unglobalcompact.org/about/integrity-measures
 # Features
 * A script to extract all the active, non-communicating and delisted participants of the UN global Compact List
 
-Preview of result
-| Participant | Country    | Year    | Sector    | Status    |
-| :---:   | :---: | :---: | :---:   | :---: | :---: |
-| Company A | Spain   | 2023-04-11   | Electricity | active  |
-| Company B | China   | 2023-04-11   | Alternative Energy | delisted|
+# Preview of result
+
+| Column 1 | Column 2 | Column 3 | Column 4 | Column 5 |
+| -------- | -------- | -------- | -------- | -------- |
+| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 | Row 1, Column 4 | Row 1, Column 5 |
+| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 | Row 2, Column 4 | Row 2, Column 5 |
+| Row 3, Column 1 | Row 3, Column 2 | Row 3, Column 3 | Row 3, Column 4 | Row 3, Column 5 |
