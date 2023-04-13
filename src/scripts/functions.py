@@ -7,18 +7,25 @@ import time as time
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-def check_url_status (url):
-    http = urllib3.PoolManager()
-    status_code_active = http.request('GET', url)
-    http_status = status_code_active.status
-    return 'status: ' + responses[http_status]
+def check_url_status(url):
+    try:
+        response = rs.head(url, verify=False)
+        response.raise_for_status()
+        return "status: OK"
+    except Exception as e:
+        return str(e)
 
 def get_parameters (url):
+    #make request and get content
     webpage_respons_max_pages = rs.get(url, verify= False)
-    content_max_pages = webpage_respons_max_pages.content
-    soup_max_pages = bs(content_max_pages, 'html.parser')
-    max_pages = soup_max_pages.find_all(attrs={'class':'results-count'})
-    max_searches = soup_max_pages.find_all(attrs={'id':'search_per_page'})
+    content = webpage_respons_max_pages.content
+
+    #parse with beautifulsoup 
+    soup = bs(content, 'html.parser')
+              
+    #get max number of pages and search options
+    max_pages = soup.find_all(attrs={'class':'results-count'})
+    max_searches = soup.find_all(attrs={'id':'search_per_page'})
     
     for search in max_searches:
         max_searches = search.get_text()
@@ -71,11 +78,12 @@ def get_entries (url):
             year_company = individual_year.get_text(strip = True)
             year_list.append(year_company)
 
-    dataframe_name = pd.DataFrame(company_list[1:], columns = ['Participant'])
-    dataframe_country = pd.DataFrame(country_list[1:], columns = ['Country'])
-    dataframe_year = pd.DataFrame(year_list[1:], columns = ['Year'])
-    dataframe_sector = pd.DataFrame(sector_list[1:], columns = ['Sector'])
+    data = {
+        "Participant": company_list[1:],
+        "Country": country_list[1:],
+        "Year": year_list[1:],
+        "Sector": sector_list[1:],
+    }
 
-    listed_concatenated_dataframes = pd.concat([dataframe_name, dataframe_sector,dataframe_country,dataframe_year], axis=1)
-
-    return listed_concatenated_dataframes
+    df = pd.DataFrame(data)
+    return df
